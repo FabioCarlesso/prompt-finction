@@ -79,7 +79,7 @@ export const meusTemplates = {
   }
 };
 
-// js/templates.js — adicione o import e inclua no objeto final
+// js/templates.js — adicione o import e inclua a coleção no array templateCollections
 import { developmentTemplates } from "./templates/developmentTemplates.js";
 import { qualityTemplates } from "./templates/qualityTemplates.js";
 import { documentationTemplates } from "./templates/documentationTemplates.js";
@@ -87,17 +87,27 @@ import { reviewTemplates } from "./templates/reviewTemplates.js";
 import { activityTemplates } from "./templates/activityTemplates.js";
 import { meusTemplates } from "./templates/meusTemplates.js";
 
-export const templates = {
-  ...developmentTemplates,
-  ...qualityTemplates,
-  ...documentationTemplates,
-  ...reviewTemplates,
-  ...activityTemplates,
-  ...meusTemplates
-};
+const templateCollections = [
+  { name: "developmentTemplates", templates: developmentTemplates },
+  { name: "qualityTemplates", templates: qualityTemplates },
+  { name: "documentationTemplates", templates: documentationTemplates },
+  { name: "reviewTemplates", templates: reviewTemplates },
+  { name: "activityTemplates", templates: activityTemplates },
+  { name: "meusTemplates", templates: meusTemplates }
+];
 ```
 
-O novo modelo aparecerá automaticamente no dropdown da aplicação.
+O novo modelo aparecerá automaticamente no dropdown da aplicação. A chave de cada template deve ser única; se duas coleções exportarem a mesma chave, a aplicação interrompe o carregamento com uma mensagem indicando as coleções em conflito.
+
+---
+
+## Testes
+
+Execute a suíte automatizada com:
+
+```sh
+npm test
+```
 
 ---
 
