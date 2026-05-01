@@ -19,6 +19,13 @@ Publicado no GitHub Pages: [https://fabiocarlesso.github.io/prompt-finction](htt
 5. Clique em **Gerar Prompt**.
 6. Clique em **Copiar** para copiar o resultado.
 
+> **Atenção ao rodar localmente:** o projeto usa ES Modules (`type="module"`), que não funcionam via protocolo `file://`. Para rodar localmente, use um servidor HTTP:
+> ```
+> npx serve .
+> # ou
+> python3 -m http.server
+> ```
+
 ---
 
 ## Modelos disponíveis
@@ -53,20 +60,40 @@ Os templates utilizam as seguintes variáveis, substituídas automaticamente ao 
 
 ## Como adicionar novos templates
 
-Edite o arquivo `js/templates.js` e adicione uma nova entrada seguindo o padrão:
+Crie ou edite um arquivo em `js/templates/` (por categoria) e exporte o objeto com os modelos. Em seguida, importe esse arquivo em `js/templates.js` e faça o merge das coleções.
 
 ```js
-meu-modelo: {
-  label: "Nome amigável",
-  category: "Categoria",
-  content: `Conteúdo do template.
+// js/templates/meusTemplates.js
+export const meusTemplates = {
+  "meu-modelo": {
+    label: "Nome amigável",
+    category: "Categoria",
+    content: `Conteúdo do template.
 
 **Tarefa:** {{TASK}}
 
 **Branch:** {{BRANCH}}
 
 **Observações:** {{NOTES}}`
-}
+  }
+};
+
+// js/templates.js — adicione o import e inclua no objeto final
+import { developmentTemplates } from "./templates/developmentTemplates.js";
+import { qualityTemplates } from "./templates/qualityTemplates.js";
+import { documentationTemplates } from "./templates/documentationTemplates.js";
+import { reviewTemplates } from "./templates/reviewTemplates.js";
+import { activityTemplates } from "./templates/activityTemplates.js";
+import { meusTemplates } from "./templates/meusTemplates.js";
+
+export const templates = {
+  ...developmentTemplates,
+  ...qualityTemplates,
+  ...documentationTemplates,
+  ...reviewTemplates,
+  ...activityTemplates,
+  ...meusTemplates
+};
 ```
 
 O novo modelo aparecerá automaticamente no dropdown da aplicação.
@@ -81,8 +108,14 @@ prompt-finction/
 ├── css/
 │   └── style.css     # Layout e estilos responsivos
 ├── js/
-│   ├── app.js        # Lógica da aplicação
-│   └── templates.js  # Modelos de prompt
+│   ├── app.js                        # Lógica da aplicação
+│   ├── templates.js                  # Agregador de modelos
+│   └── templates/
+│       ├── developmentTemplates.js   # Categoria: Desenvolvimento
+│       ├── qualityTemplates.js       # Categoria: Qualidade
+│       ├── documentationTemplates.js # Categoria: Documentação
+│       ├── reviewTemplates.js        # Categoria: Review
+│       └── activityTemplates.js      # Templates de atividade
 ├── .nojekyll         # Desabilita processamento Jekyll no GitHub Pages
 └── README.md
 ```
