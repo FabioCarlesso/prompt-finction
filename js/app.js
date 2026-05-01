@@ -10,8 +10,42 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultArea = document.getElementById("result");
   const copyMsg = document.getElementById("copy-message");
   const taskError = document.getElementById("task-error");
+  const themeToggle = document.getElementById("theme-toggle");
 
+  initTheme();
   loadTemplates();
+
+  themeToggle.addEventListener("click", toggleTheme);
+
+  function initTheme() {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    updateToggleLabel(isDark);
+
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      if (!localStorage.getItem("theme")) {
+        applyTheme(e.matches ? "dark" : "light");
+      }
+    });
+  }
+
+  function toggleTheme() {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    const next = isDark ? "light" : "dark";
+    localStorage.setItem("theme", next);
+    applyTheme(next);
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    updateToggleLabel(theme === "dark");
+  }
+
+  function updateToggleLabel(isDark) {
+    themeToggle.setAttribute(
+      "aria-label",
+      isDark ? "Alternar para tema claro" : "Alternar para tema escuro"
+    );
+  }
 
   generateBtn.addEventListener("click", generatePrompt);
   copyBtn.addEventListener("click", copyPrompt);
