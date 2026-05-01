@@ -52,6 +52,7 @@ test("templates exports all current template keys", () => {
     "backend-review",
     "frontend-review",
     "pr-review",
+    "java-spring-boot-review",
     "activity-implementation",
     "github-issue"
   ]);

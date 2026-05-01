@@ -57,5 +57,25 @@ Verifique: acessibilidade, responsividade, performance, reutilização de compon
 ---
 
 Avalie: clareza do objetivo, qualidade do código, cobertura de testes, impacto em outras funcionalidades e conformidade com os critérios de aceite da issue relacionada.`
+  },
+
+  "java-spring-boot-review": {
+    label: "Review Java Spring Boot",
+    category: "Review",
+    content: `Realize o code review de uma aplicação Java Spring Boot descrita abaixo.
+
+**Contexto:** {{TASK}}
+
+**Branch / PR:** {{BRANCH}}
+
+**Link:** {{LINK}}
+
+**Tecnologia principal:** {{TECH}}
+
+**Observações:** {{NOTES}}
+
+---
+
+Verifique: arquitetura em camadas, uso correto de controllers, services e repositories, validação de entrada, tratamento de exceções, transações, segurança, configuração, observabilidade, performance, testes unitários e de integração, migrações de banco e aderência às convenções do Spring Boot.`
   }
 };
