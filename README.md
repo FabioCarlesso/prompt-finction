@@ -53,20 +53,30 @@ Os templates utilizam as seguintes variáveis, substituídas automaticamente ao 
 
 ## Como adicionar novos templates
 
-Edite o arquivo `js/templates.js` e adicione uma nova entrada seguindo o padrão:
+Crie ou edite um arquivo em `js/templates/` (por categoria) e exporte o objeto com os modelos. Em seguida, importe esse arquivo em `js/templates.js` e faça o merge das coleções.
 
 ```js
-meu-modelo: {
-  label: "Nome amigável",
-  category: "Categoria",
-  content: `Conteúdo do template.
+// js/templates/meusTemplates.js
+export const meusTemplates = {
+  "meu-modelo": {
+    label: "Nome amigável",
+    category: "Categoria",
+    content: `Conteúdo do template.
 
 **Tarefa:** {{TASK}}
 
 **Branch:** {{BRANCH}}
 
 **Observações:** {{NOTES}}`
-}
+  }
+};
+
+// js/templates.js
+import { meusTemplates } from "./templates/meusTemplates.js";
+
+export const templates = {
+  ...meusTemplates
+};
 ```
 
 O novo modelo aparecerá automaticamente no dropdown da aplicação.
@@ -81,8 +91,12 @@ prompt-finction/
 ├── css/
 │   └── style.css     # Layout e estilos responsivos
 ├── js/
-│   ├── app.js        # Lógica da aplicação
-│   └── templates.js  # Modelos de prompt
+│   ├── app.js                   # Lógica da aplicação
+│   ├── templates.js             # Agregador de modelos
+│   └── templates/
+│       ├── activityTemplates.js
+│       ├── baseTemplates.js
+│       └── reviewTemplates.js
 ├── .nojekyll         # Desabilita processamento Jekyll no GitHub Pages
 └── README.md
 ```

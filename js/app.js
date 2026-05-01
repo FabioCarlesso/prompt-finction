@@ -1,3 +1,5 @@
+import { templates } from "./templates.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const select = document.getElementById("template-select");
   const taskInput = document.getElementById("task");
