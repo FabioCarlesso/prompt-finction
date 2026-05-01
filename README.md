@@ -73,6 +73,23 @@ O novo modelo aparecerá automaticamente no dropdown da aplicação.
 
 ---
 
+
+## Template de Issue no GitHub
+
+O repositório inclui um template de issue para abertura de atividades em `.github/ISSUE_TEMPLATE/atividade.yml`.
+
+Esse template padroniza o preenchimento de:
+- contexto;
+- objetivo;
+- critérios de aceite;
+- referências;
+- tecnologia principal;
+- observações adicionais.
+
+Também foi incluído `.github/ISSUE_TEMPLATE/config.yml` para desabilitar issues em branco e direcionar dúvidas para Discussions.
+
+---
+
 ## Estrutura do projeto
 
 ```

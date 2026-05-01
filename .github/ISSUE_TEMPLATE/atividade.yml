@@ -1,0 +1,65 @@
+name: "Nova atividade"
+description: "Template para abrir atividades e padronizar contexto de implementação"
+title: "[Atividade] "
+labels:
+  - atividade
+body:
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto
+      description: Descreva o cenário e o problema a resolver.
+      placeholder: Qual é o contexto desta atividade?
+    validations:
+      required: true
+
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: Objetivo
+      description: Explique claramente o resultado esperado.
+      placeholder: O que precisa ser implementado?
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios-aceite
+    attributes:
+      label: Critérios de aceite
+      description: Liste critérios objetivos para considerar a atividade concluída.
+      placeholder: |
+        - [ ] Critério 1
+        - [ ] Critério 2
+    validations:
+      required: true
+
+  - type: input
+    id: referencia
+    attributes:
+      label: Referências
+      description: Links de apoio (docs, Figma, issue relacionada, etc.).
+      placeholder: https://...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: tecnologia
+    attributes:
+      label: Tecnologia principal
+      options:
+        - Frontend
+        - Backend
+        - Fullstack
+        - Documentação
+        - Infraestrutura
+        - Outro
+    validations:
+      required: true
+
+  - type: textarea
+    id: observacoes
+    attributes:
+      label: Observações adicionais
+      description: Dependências, restrições ou informações extras.
+    validations:
+      required: false
