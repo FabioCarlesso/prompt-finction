@@ -66,6 +66,9 @@ header {
   align-items: center;
   justify-content: center;
   font-weight: normal;
+  cursor: pointer;
+  touch-action: manipulation;
+  z-index: 10;
 }
 
 #theme-toggle:hover {
@@ -302,5 +305,11 @@ footer a:hover {
   #generate-btn,
   #copy-btn {
     width: 100%;
+  }
+
+  #theme-toggle {
+    right: 0.25rem;
+    width: 44px;
+    height: 44px;
   }
 }
