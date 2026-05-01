@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
     updateToggleLabel(isDark);
 
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-      if (!localStorage.getItem("theme")) {
-        applyTheme(e.matches ? "dark" : "light");
+      if (!localStorage.getItem("theme") && !e.matches) {
+        applyTheme("light");
       }
     });
   }
