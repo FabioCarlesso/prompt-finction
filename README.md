@@ -19,6 +19,13 @@ Publicado no GitHub Pages: [https://fabiocarlesso.github.io/prompt-finction](htt
 5. Clique em **Gerar Prompt**.
 6. Clique em **Copiar** para copiar o resultado.
 
+> **Atenção ao rodar localmente:** o projeto usa ES Modules (`type="module"`), que não funcionam via protocolo `file://`. Para rodar localmente, use um servidor HTTP:
+> ```
+> npx serve .
+> # ou
+> python3 -m http.server
+> ```
+
 ---
 
 ## Modelos disponíveis
@@ -71,10 +78,20 @@ export const meusTemplates = {
   }
 };
 
-// js/templates.js
+// js/templates.js — adicione o import e inclua no objeto final
+import { developmentTemplates } from "./templates/developmentTemplates.js";
+import { qualityTemplates } from "./templates/qualityTemplates.js";
+import { documentationTemplates } from "./templates/documentationTemplates.js";
+import { reviewTemplates } from "./templates/reviewTemplates.js";
+import { activityTemplates } from "./templates/activityTemplates.js";
 import { meusTemplates } from "./templates/meusTemplates.js";
 
 export const templates = {
+  ...developmentTemplates,
+  ...qualityTemplates,
+  ...documentationTemplates,
+  ...reviewTemplates,
+  ...activityTemplates,
   ...meusTemplates
 };
 ```
@@ -91,12 +108,14 @@ prompt-finction/
 ├── css/
 │   └── style.css     # Layout e estilos responsivos
 ├── js/
-│   ├── app.js                   # Lógica da aplicação
-│   ├── templates.js             # Agregador de modelos
+│   ├── app.js                        # Lógica da aplicação
+│   ├── templates.js                  # Agregador de modelos
 │   └── templates/
-│       ├── activityTemplates.js
-│       ├── baseTemplates.js
-│       └── reviewTemplates.js
+│       ├── developmentTemplates.js   # Categoria: Desenvolvimento
+│       ├── qualityTemplates.js       # Categoria: Qualidade
+│       ├── documentationTemplates.js # Categoria: Documentação
+│       ├── reviewTemplates.js        # Categoria: Review
+│       └── activityTemplates.js      # Templates de atividade
 ├── .nojekyll         # Desabilita processamento Jekyll no GitHub Pages
 └── README.md
 ```
