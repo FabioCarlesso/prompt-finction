@@ -33,6 +33,7 @@ Publicado no GitHub Pages: [https://fabiocarlesso.github.io/prompt-finction](htt
 | `tests` | Qualidade | Criação de testes |
 | `docs` | Documentação | Criação ou atualização de documentação |
 | `pr-review` | Review | Review de Pull Request |
+| `activity-implementation` | Desenvolvimento | Template completo para implementar atividade/issue com fluxo de contexto, execução, validação e finalização |
 
 ---
 
