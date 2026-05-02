@@ -45,13 +45,5 @@ For each finding, use the following format:
 - Suggested improvement:
 - Severity: Low / Medium / High
 
-If no issue is found in a specific area, mention that it looks good.
-
-**Branch sugerida:** {{BRANCH}}
-
-**Link:** {{LINK}}
-
-**Tecnologia principal:** {{TECH}}
-
-**Observações:** {{NOTES}}`
+If no issue is found in a specific area, mention that it looks good.`
 };
