@@ -63,43 +63,51 @@ Os templates utilizam as seguintes variáveis, substituídas automaticamente ao 
 
 ## Como adicionar novos templates
 
-Crie ou edite um arquivo em `js/templates/` (por categoria) e exporte o objeto com os modelos. Em seguida, importe esse arquivo em `js/templates.js` e faça o merge das coleções.
+Cada template possui seu próprio arquivo em `js/templates/`, nomeado conforme o identificador do template (label). Siga os passos abaixo:
+
+**1. Crie o arquivo do template** em `js/templates/meu-modelo.js`:
 
 ```js
-// js/templates/meusTemplates.js
-export const meusTemplates = {
-  "meu-modelo": {
-    label: "Nome amigável",
-    category: "Categoria",
-    content: `Conteúdo do template.
+// js/templates/meu-modelo.js
+export const meuModelo = {
+  label: "Nome amigável",
+  category: "Categoria",
+  content: `Conteúdo do template.
 
 **Tarefa:** {{TASK}}
 
 **Branch:** {{BRANCH}}
 
 **Observações:** {{NOTES}}`
-  }
 };
+```
 
-// js/templates.js — adicione o import e inclua a coleção no array templateCollections
-import { developmentTemplates } from "./templates/developmentTemplates.js";
-import { qualityTemplates } from "./templates/qualityTemplates.js";
-import { documentationTemplates } from "./templates/documentationTemplates.js";
-import { reviewTemplates } from "./templates/reviewTemplates.js";
-import { activityTemplates } from "./templates/activityTemplates.js";
-import { meusTemplates } from "./templates/meusTemplates.js";
+**2. Registre o template** em `js/templates/index.js`:
 
-const templateCollections = [
-  { name: "developmentTemplates", templates: developmentTemplates },
-  { name: "qualityTemplates", templates: qualityTemplates },
-  { name: "documentationTemplates", templates: documentationTemplates },
-  { name: "reviewTemplates", templates: reviewTemplates },
-  { name: "activityTemplates", templates: activityTemplates },
-  { name: "meusTemplates", templates: meusTemplates }
+```js
+import { meuModelo } from "./meu-modelo.js";
+
+export const templateCollections = [
+  // ... templates existentes ...
+  { name: "meuModelo", templates: { "meu-modelo": meuModelo } }
 ];
 ```
 
-O novo modelo aparecerá automaticamente no dropdown da aplicação. A chave de cada template deve ser única; se duas coleções exportarem a mesma chave, a aplicação interrompe o carregamento com uma mensagem indicando as coleções em conflito.
+O novo modelo aparecerá automaticamente no dropdown da aplicação. A chave de cada template (ex: `"meu-modelo"`) deve ser única; se dois arquivos definirem a mesma chave, a aplicação interrompe o carregamento com uma mensagem indicando o conflito.
+
+### Estrutura mínima obrigatória de um template
+
+| Campo | Tipo | Descrição |
+|---|---|---|
+| `label` | string | Nome exibido no dropdown |
+| `category` | string | Categoria de agrupamento |
+| `content` | string | Corpo do prompt com variáveis `{{TASK}}`, `{{BRANCH}}`, `{{LINK}}`, `{{TECH}}`, `{{NOTES}}` |
+
+### Convenção de nomenclatura
+
+- **Arquivo**: `kebab-case` correspondendo ao identificador do template (ex: `backend-review.js`)
+- **Export**: `camelCase` da chave do template (ex: `backendReview`)
+- **Chave no registro**: `kebab-case` igual ao nome do arquivo sem extensão (ex: `"backend-review"`)
 
 ---
 
@@ -121,14 +129,21 @@ prompt-finction/
 ├── css/
 │   └── style.css     # Layout e estilos responsivos
 ├── js/
-│   ├── app.js                        # Lógica da aplicação
-│   ├── templates.js                  # Agregador de modelos
+│   ├── app.js                              # Lógica da aplicação
+│   ├── templates.js                        # Merge e exportação dos templates
 │   └── templates/
-│       ├── developmentTemplates.js   # Categoria: Desenvolvimento
-│       ├── qualityTemplates.js       # Categoria: Qualidade
-│       ├── documentationTemplates.js # Categoria: Documentação
-│       ├── reviewTemplates.js        # Categoria: Review
-│       └── activityTemplates.js      # Templates de atividade
+│       ├── index.js                        # Registro central de templates
+│       ├── feature.js                      # Template: Implementação de Feature
+│       ├── refactor.js                     # Template: Refatoração
+│       ├── bugfix.js                       # Template: Correção de Bug
+│       ├── tests.js                        # Template: Criação de Testes
+│       ├── docs.js                         # Template: Documentação
+│       ├── backend-review.js               # Template: Review de Backend
+│       ├── frontend-review.js              # Template: Review de Frontend
+│       ├── pr-review.js                    # Template: Review de Pull Request
+│       ├── java-spring-boot-review.js      # Template: Review Java Spring Boot
+│       ├── activity-implementation.js      # Template: Implementação de Atividade
+│       └── github-issue.js                 # Template: Criação de Issue no GitHub
 ├── .nojekyll         # Desabilita processamento Jekyll no GitHub Pages
 └── README.md
 ```
