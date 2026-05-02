@@ -1,8 +1,7 @@
-export const documentationTemplates = {
-  docs: {
-    label: "Documentação",
-    category: "Documentação",
-    content: `Crie ou atualize a documentação conforme descrito abaixo.
+export const docs = {
+  label: "Documentação",
+  category: "Documentação",
+  content: `Crie ou atualize a documentação conforme descrito abaixo.
 
 **Tarefa:** {{TASK}}
 
@@ -17,5 +16,4 @@ export const documentationTemplates = {
 ---
 
 A documentação deve ser clara, objetiva e voltada ao público-alvo. Use exemplos práticos sempre que possível.`
-  }
 };
