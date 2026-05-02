@@ -51,8 +51,8 @@ Observações: {{NOTES}}`
     
 Criar uma issue clara, organizada e pronta para orientar o desenvolvimento da seguinte atividade: {{TASK}}
 
-Contexto: {{NOTES}}
-Tecnologia {{TECH}}
+Observações: {{NOTES}}
+Tecnologia: {{TECH}}
 
 A issue deve conter:
 
