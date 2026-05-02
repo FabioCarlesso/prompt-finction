@@ -9,8 +9,13 @@ import { prReview } from "./pr-review.js";
 import { javaSpringBootReview } from "./java-spring-boot-review.js";
 import { activityImplementation } from "./activity-implementation.js";
 import { githubIssue } from "./github-issue.js";
+import { angularReview } from "./angular-review.js";
 
 export const templateCollections = [
+  { name: "activityImplementation", templates: { "activity-implementation": activityImplementation } },  
+  { name: "javaSpringBootReview", templates: { "java-spring-boot-review": javaSpringBootReview } },
+  { name: "githubIssue", templates: { "github-issue": githubIssue } },
+  { name: "angularReview ", templates: { "angular-review ": angularReview } },
   { name: "feature", templates: { feature } },
   { name: "refactor", templates: { refactor } },
   { name: "bugfix", templates: { bugfix } },
@@ -18,8 +23,5 @@ export const templateCollections = [
   { name: "docs", templates: { docs } },
   { name: "backendReview", templates: { "backend-review": backendReview } },
   { name: "frontendReview", templates: { "frontend-review": frontendReview } },
-  { name: "prReview", templates: { "pr-review": prReview } },
-  { name: "javaSpringBootReview", templates: { "java-spring-boot-review": javaSpringBootReview } },
-  { name: "activityImplementation", templates: { "activity-implementation": activityImplementation } },
-  { name: "githubIssue", templates: { "github-issue": githubIssue } }
+  { name: "prReview", templates: { "pr-review": prReview } }
 ];

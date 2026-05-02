@@ -1,9 +1,7 @@
 export const javaSpringBootReview = {
   label: "Review Java Spring Boot",
   category: "Review",
-  content: `Review the PR below in detail:
-
-PR: {{TASK}}
+  content: `Review the PR below in detail: {{TASK}}
 
 Focus your review on the following areas:
 
