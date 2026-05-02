@@ -35,37 +35,24 @@ Finalização:
   - arquivos principais alterados;
   - referência da issue.
 
-**Branch sugerida:** {{BRANCH}}
+Branch sugerida: {{BRANCH}}
 
-**Referência:** {{LINK}}
+Referência: {{LINK}}
 
-**Tecnologia principal:** {{TECH}}
+Tecnologia principal: {{TECH}}
 
-**Observações:** {{NOTES}}`
+Observações: {{NOTES}}`
   },
 
   "github-issue": {
     label: "Criação de Issue no GitHub",
     category: "Desenvolvimento",
-    content: `Crie uma issue no GitHub para o repositório:
+    content: `Crie uma issue no GitHub para o repositório {{LINK}}
+    
+Criar uma issue clara, organizada e pronta para orientar o desenvolvimento da seguinte atividade: {{TASK}}
 
-**Repositório:** {{LINK}}
-
-## Objetivo
-
-Criar uma issue clara, organizada e pronta para orientar o desenvolvimento da seguinte atividade:
-
-**Atividade:** {{TASK}}
-
-## Contexto
-
-{{NOTES}}
-
-## Tecnologia
-
-{{TECH}}
-
-## Requisitos da issue
+Contexto: {{NOTES}}
+Tecnologia {{TECH}}
 
 A issue deve conter:
 
@@ -76,38 +63,6 @@ A issue deve conter:
 - Critérios de aceite
 - Sugestão de validação/testes
 - Observações técnicas, se existirem
-- Labels sugeridas, se fizer sentido
-
-## Estrutura esperada da issue
-
-Use o seguinte formato:
-
-\`\`\`md
-## Objetivo
-
-Descrever de forma direta o que deve ser implementado, corrigido ou analisado.
-
-## Contexto
-
-Explicar o motivo da issue, cenário atual, problema identificado ou necessidade da funcionalidade.
-
-## Escopo
-
-- Item 1
-- Item 2
-- Item 3
-
-## Critérios de aceite
-
-- [ ] Critério objetivo e verificável
-- [ ] Critério objetivo e verificável
-- [ ] Critério objetivo e verificável
-
-## Validação
-
-- [ ] Executar testes automatizados, se existirem
-- [ ] Executar lint/build, se o projeto possuir
-- [ ] Validar manualmente o comportamento esperado
-\`\`\``
+- Labels sugeridas, se fizer sentido`
   }
 };
