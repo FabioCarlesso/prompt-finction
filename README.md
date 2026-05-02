@@ -18,6 +18,7 @@ Publicado no GitHub Pages: [https://fabiocarlesso.github.io/prompt-finction](htt
 4. Preencha os campos opcionais conforme necessário.
 5. Clique em **Gerar Prompt**.
 6. Clique em **Copiar** para copiar o resultado.
+7. Clique em **Limpar Campos** para resetar todos os campos e o resultado gerado.
 
 > **Atenção ao rodar localmente:** o projeto usa ES Modules (`type="module"`), que não funcionam via protocolo `file://`. Para rodar localmente, use um servidor HTTP:
 > ```
@@ -157,7 +158,7 @@ prompt-finction/
 
 - [ ] Salvar último modelo usado no `localStorage`
 - [ ] Histórico dos últimos prompts gerados
-- [ ] Botão "Limpar campos"
+- [x] Botão "Limpar campos"
 - [ ] Botão "Baixar como Markdown"
 - [ ] Modo claro/escuro
 - [ ] Busca por modelo
