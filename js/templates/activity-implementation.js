@@ -32,10 +32,5 @@ Finalização:
   - motivo da mudança;
   - testes executados;
   - arquivos principais alterados;
-  - referência da issue.
-
-Branch sugerida: {{BRANCH}}
-Referência: {{LINK}}
-Tecnologia principal: {{TECH}}
-Observações: {{NOTES}}`
+  - referência da issue`
 };
