@@ -158,9 +158,7 @@ prompt-finction/
 
 - [ ] Salvar último modelo usado no `localStorage`
 - [ ] Histórico dos últimos prompts gerados
-- [x] Botão "Limpar campos"
 - [ ] Botão "Baixar como Markdown"
-- [ ] Modo claro/escuro
 - [ ] Busca por modelo
 - [ ] Filtro por categoria
 - [ ] Templates personalizados pela interface
