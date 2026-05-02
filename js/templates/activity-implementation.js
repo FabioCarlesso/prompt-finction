@@ -35,10 +35,7 @@ Finalização:
   - referência da issue.
 
 Branch sugerida: {{BRANCH}}
-
 Referência: {{LINK}}
-
 Tecnologia principal: {{TECH}}
-
 Observações: {{NOTES}}`
 };
