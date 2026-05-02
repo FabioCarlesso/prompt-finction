@@ -31,19 +31,19 @@ Publicado no GitHub Pages: [https://fabiocarlesso.github.io/prompt-finction](htt
 
 ## Modelos disponíveis
 
-| Modelo | Categoria | Descrição |
+| Modelo | Labels | Descrição |
 |---|---|---|
-| `feature` | Desenvolvimento | Implementação de nova feature |
-| `refactor` | Desenvolvimento | Refatoração de código existente |
-| `bugfix` | Desenvolvimento | Correção de bug |
-| `backend-review` | Review | Code review de backend |
-| `frontend-review` | Review | Code review de frontend |
-| `tests` | Qualidade | Criação de testes |
-| `docs` | Documentação | Criação ou atualização de documentação |
-| `pr-review` | Review | Review de Pull Request |
-| `java-spring-boot-review` | Review | Code review de aplicação Java Spring Boot |
-| `activity-implementation` | Desenvolvimento | Template completo para implementar atividade/issue com fluxo de contexto, execução, validação e finalização |
-| `github-issue` | Desenvolvimento | Criação de issue no GitHub com objetivo, contexto, escopo, critérios de aceite e validação |
+| `feature` | `desenvolvimento`, `backend`, `frontend` | Implementação de nova feature |
+| `refactor` | `desenvolvimento`, `refactor` | Refatoração de código existente |
+| `bugfix` | `desenvolvimento`, `bugfix` | Correção de bug |
+| `backend-review` | `review`, `backend` | Code review de backend |
+| `frontend-review` | `review`, `frontend` | Code review de frontend |
+| `tests` | `qualidade`, `testes` | Criação de testes |
+| `docs` | `documentação` | Criação ou atualização de documentação |
+| `pr-review` | `review` | Review de Pull Request |
+| `java-spring-boot-review` | `review`, `backend`, `java` | Code review de aplicação Java Spring Boot |
+| `activity-implementation` | `desenvolvimento`, `atividade` | Template completo para implementar atividade/issue com fluxo de contexto, execução, validação e finalização |
+| `github-issue` | `desenvolvimento`, `github` | Criação de issue no GitHub com objetivo, contexto, escopo, critérios de aceite e validação |
 
 ---
 
@@ -63,14 +63,14 @@ Os templates utilizam as seguintes variáveis, substituídas automaticamente ao 
 
 ## Como adicionar novos templates
 
-Crie ou edite um arquivo em `js/templates/` (por categoria) e exporte o objeto com os modelos. Em seguida, importe esse arquivo em `js/templates.js` e faça o merge das coleções.
+Crie ou edite um arquivo em `js/templates/` e exporte o objeto com os modelos. Em seguida, importe esse arquivo em `js/templates.js` e faça o merge das coleções.
 
 ```js
 // js/templates/meusTemplates.js
 export const meusTemplates = {
   "meu-modelo": {
     label: "Nome amigável",
-    category: "Categoria",
+    labels: ["desenvolvimento", "backend"],
     content: `Conteúdo do template.
 
 **Tarefa:** {{TASK}}
@@ -122,13 +122,13 @@ prompt-finction/
 │   └── style.css     # Layout e estilos responsivos
 ├── js/
 │   ├── app.js                        # Lógica da aplicação
-│   ├── templates.js                  # Agregador de modelos
+│   ├── templates.js                  # Agregador de modelos e funções de label
 │   └── templates/
-│       ├── developmentTemplates.js   # Categoria: Desenvolvimento
-│       ├── qualityTemplates.js       # Categoria: Qualidade
-│       ├── documentationTemplates.js # Categoria: Documentação
-│       ├── reviewTemplates.js        # Categoria: Review
-│       └── activityTemplates.js      # Templates de atividade
+│       ├── developmentTemplates.js   # Templates: desenvolvimento
+│       ├── qualityTemplates.js       # Templates: qualidade
+│       ├── documentationTemplates.js # Templates: documentação
+│       ├── reviewTemplates.js        # Templates: review
+│       └── activityTemplates.js      # Templates: atividade e github
 ├── .nojekyll         # Desabilita processamento Jekyll no GitHub Pages
 └── README.md
 ```
@@ -160,7 +160,7 @@ prompt-finction/
 - [ ] Histórico dos últimos prompts gerados
 - [ ] Botão "Baixar como Markdown"
 - [ ] Busca por modelo
-- [ ] Filtro por categoria
+- [x] Filtro por label
 - [ ] Templates personalizados pela interface
 - [ ] Exportar/importar templates em JSON
 - [ ] Suporte a inglês

@@ -1,7 +1,8 @@
-import { templates } from "./templates.js";
+import { templates, getAllLabels } from "./templates.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const select = document.getElementById("template-select");
+  const labelFilter = document.getElementById("label-filter");
   const taskInput = document.getElementById("task");
   const branchInput = document.getElementById("branch");
   const linkInput = document.getElementById("link");
@@ -16,9 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearBtn = document.getElementById("clear-btn");
 
   initTheme();
+  loadLabels();
   loadTemplates();
 
   themeToggle.addEventListener("click", toggleTheme);
+  labelFilter.addEventListener("change", () => loadTemplates(labelFilter.value));
 
   function initTheme() {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
@@ -54,11 +57,22 @@ document.addEventListener("DOMContentLoaded", () => {
   copyBtn.addEventListener("click", copyPrompt);
   clearBtn.addEventListener("click", clearForm);
 
-  function loadTemplates() {
+  function loadLabels() {
+    getAllLabels(templates).forEach(label => {
+      const option = document.createElement("option");
+      option.value = label;
+      option.textContent = label;
+      labelFilter.appendChild(option);
+    });
+  }
+
+  function loadTemplates(filterLabel = "") {
+    select.innerHTML = "";
     Object.entries(templates).forEach(([key, tpl]) => {
+      if (filterLabel && !(tpl.labels || []).includes(filterLabel)) return;
       const option = document.createElement("option");
       option.value = key;
-      option.textContent = `${tpl.label} — ${tpl.category}`;
+      option.textContent = tpl.label;
       select.appendChild(option);
     });
   }
@@ -117,6 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
     copyBtn.disabled = true;
     taskError.style.display = "none";
     copyMsg.style.display = "none";
+    labelFilter.value = "";
+    loadTemplates();
     taskInput.focus();
   }
 

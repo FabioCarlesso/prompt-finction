@@ -1,7 +1,7 @@
 export const reviewTemplates = {
   "backend-review": {
     label: "Review de Backend",
-    category: "Review",
+    labels: ["review", "backend"],
     content: `Realize o code review do backend descrito abaixo.
 
 **Contexto:** {{TASK}}
@@ -21,7 +21,7 @@ Verifique: segurança, performance, tratamento de erros, cobertura de testes, le
 
   "frontend-review": {
     label: "Review de Frontend",
-    category: "Review",
+    labels: ["review", "frontend"],
     content: `Realize o code review do frontend descrito abaixo.
 
 **Contexto:** {{TASK}}
@@ -41,7 +41,7 @@ Verifique: acessibilidade, responsividade, performance, reutilização de compon
 
   "pr-review": {
     label: "Review de Pull Request",
-    category: "Review",
+    labels: ["review"],
     content: `Realize o review do Pull Request descrito abaixo.
 
 **Contexto do PR:** {{TASK}}
@@ -61,7 +61,7 @@ Avalie: clareza do objetivo, qualidade do código, cobertura de testes, impacto 
 
   "java-spring-boot-review": {
     label: "Review Java Spring Boot",
-    category: "Review",
+    labels: ["review", "backend", "java"],
     content: `Review the PR below in detail:
 
 PR: {{TASK}}

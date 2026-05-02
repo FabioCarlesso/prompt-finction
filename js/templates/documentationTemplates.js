@@ -1,7 +1,7 @@
 export const documentationTemplates = {
   docs: {
     label: "Documentação",
-    category: "Documentação",
+    labels: ["documentação"],
     content: `Crie ou atualize a documentação conforme descrito abaixo.
 
 **Tarefa:** {{TASK}}

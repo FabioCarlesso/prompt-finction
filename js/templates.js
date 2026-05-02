@@ -12,6 +12,22 @@ const templateCollections = [
   { name: "activityTemplates", templates: activityTemplates }
 ];
 
+export function getAllLabels(templatesObj) {
+  const labelsSet = new Set();
+  Object.values(templatesObj).forEach(tpl => {
+    (tpl.labels || []).forEach(l => labelsSet.add(l));
+  });
+  return [...labelsSet].sort();
+}
+
+export function getTemplatesByLabel(templatesObj, label) {
+  return Object.fromEntries(
+    Object.entries(templatesObj).filter(([, tpl]) =>
+      (tpl.labels || []).includes(label)
+    )
+  );
+}
+
 export function mergeTemplateCollections(collections) {
   const mergedTemplates = {};
   const sourceByKey = new Map();

@@ -1,7 +1,7 @@
 export const qualityTemplates = {
   tests: {
     label: "Criação de Testes",
-    category: "Qualidade",
+    labels: ["qualidade", "testes"],
     content: `Crie os testes para a funcionalidade descrita abaixo.
 
 **Funcionalidade a testar:** {{TASK}}
