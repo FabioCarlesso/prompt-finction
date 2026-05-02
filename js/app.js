@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const copyMsg = document.getElementById("copy-message");
   const taskError = document.getElementById("task-error");
   const themeToggle = document.getElementById("theme-toggle");
+  const clearBtn = document.getElementById("clear-btn");
 
   initTheme();
   loadTemplates();
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   generateBtn.addEventListener("click", generatePrompt);
   copyBtn.addEventListener("click", copyPrompt);
+  clearBtn.addEventListener("click", clearForm);
 
   function loadTemplates() {
     Object.entries(templates).forEach(([key, tpl]) => {
@@ -103,6 +105,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const ok = document.execCommand("copy");
       showCopyMessage(ok ? "Prompt copiado!" : "Não foi possível copiar. Selecione e copie manualmente.", !ok);
     });
+  }
+
+  function clearForm() {
+    taskInput.value = "";
+    branchInput.value = "";
+    linkInput.value = "";
+    techInput.value = "";
+    notesInput.value = "";
+    resultArea.value = "";
+    copyBtn.disabled = true;
+    taskError.style.display = "none";
+    copyMsg.style.display = "none";
+    taskInput.focus();
   }
 
   function showCopyMessage(msg, isError) {

@@ -244,6 +244,16 @@ button:active {
   cursor: not-allowed;
 }
 
+#clear-btn {
+  background: var(--surface-alt);
+  color: var(--error);
+  border: 1px solid var(--error);
+}
+
+#clear-btn:hover {
+  background: var(--copy-error-bg);
+}
+
 #result {
   width: 100%;
   min-height: 220px;
@@ -303,7 +313,8 @@ footer a:hover {
   }
 
   #generate-btn,
-  #copy-btn {
+  #copy-btn,
+  #clear-btn {
     width: 100%;
   }
 
