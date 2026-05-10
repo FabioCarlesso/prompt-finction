@@ -14,6 +14,8 @@ import { prReview } from "../js/templates/pr-review.js";
 import { javaSpringBootReview } from "../js/templates/java-spring-boot-review.js";
 import { activityImplementation } from "../js/templates/activity-implementation.js";
 import { githubIssue } from "../js/templates/github-issue.js";
+import { angularReview } from "../js/templates/angular-review.js";
+import { bragPrompt } from "../js/templates/brag-prompt.js";
 
 const REQUIRED_FIELDS = ["label", "category", "content"];
 
@@ -58,6 +60,10 @@ test("mergeTemplateCollections rejects duplicate template keys", () => {
 
 test("templates exports all current template keys", () => {
   assert.deepEqual(Object.keys(templates), [
+    "activity-implementation",
+    "java-spring-boot-review",
+    "github-issue",
+    "angular-review",
     "feature",
     "refactor",
     "bugfix",
@@ -66,9 +72,7 @@ test("templates exports all current template keys", () => {
     "backend-review",
     "frontend-review",
     "pr-review",
-    "java-spring-boot-review",
-    "activity-implementation",
-    "github-issue"
+    "brag-prompt"
   ]);
 });
 
@@ -84,7 +88,9 @@ test("each individual template file has the required structure", () => {
     prReview,
     javaSpringBootReview,
     activityImplementation,
-    githubIssue
+    githubIssue,
+    angularReview,
+    bragPrompt
   ];
 
   for (const template of individualTemplates) {
@@ -102,7 +108,7 @@ test("each individual template file has the required structure", () => {
 });
 
 test("templateCollections index exports one collection per label", () => {
-  assert.equal(templateCollections.length, 11);
+  assert.equal(templateCollections.length, 13);
 
   for (const collection of templateCollections) {
     assert.ok(
@@ -135,4 +141,28 @@ test("adding a new valid template file makes it available in the merged template
 
   assert.ok(Object.prototype.hasOwnProperty.call(result, "new-template"));
   assert.deepEqual(result["new-template"], newTemplate);
+});
+
+test("brag-prompt template has expected metadata and content", () => {
+  assert.equal(bragPrompt.label, "Brag prompt");
+  assert.equal(bragPrompt.category, "Desenvolvimento");
+  assert.ok(bragPrompt.content.includes("{{TASK}}"), "content must reference the {{TASK}} variable");
+
+  const expectedCategories = [
+    "saude",
+    "familia",
+    "espiritual",
+    "estudo",
+    "lazer",
+    "profissional",
+    "financeiro"
+  ];
+  for (const key of expectedCategories) {
+    assert.ok(
+      bragPrompt.content.includes(`- ${key}:`),
+      `content must list category key "${key}"`
+    );
+  }
+
+  assert.ok(!/Respota/.test(bragPrompt.content), "content must not contain typo 'Respota'");
 });

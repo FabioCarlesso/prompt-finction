@@ -44,6 +44,8 @@ Publicado no GitHub Pages: [https://fabiocarlesso.github.io/prompt-finction](htt
 | `java-spring-boot-review` | Review | Code review de aplicação Java Spring Boot |
 | `activity-implementation` | Desenvolvimento | Template completo para implementar atividade/issue com fluxo de contexto, execução, validação e finalização |
 | `github-issue` | Desenvolvimento | Criação de issue no GitHub com objetivo, contexto, escopo, critérios de aceite e validação |
+| `angular-review` | Review | Code review de PR Angular |
+| `brag-prompt` | Desenvolvimento | Organiza conquistas/atividades anotadas no WhatsApp em categorias (saúde, família, espiritual, estudo, lazer, profissional, financeiro) |
 
 ---
 
@@ -143,7 +145,9 @@ prompt-finction/
 │       ├── pr-review.js                    # Template: Review de Pull Request
 │       ├── java-spring-boot-review.js      # Template: Review Java Spring Boot
 │       ├── activity-implementation.js      # Template: Implementação de Atividade
-│       └── github-issue.js                 # Template: Criação de Issue no GitHub
+│       ├── github-issue.js                 # Template: Criação de Issue no GitHub
+│       ├── angular-review.js               # Template: Review Angular
+│       └── brag-prompt.js                  # Template: Brag prompt (organiza conquistas)
 ├── .nojekyll         # Desabilita processamento Jekyll no GitHub Pages
 └── README.md
 ```
